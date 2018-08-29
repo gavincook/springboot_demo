@@ -4,7 +4,6 @@ import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import java.util.List;
 import me.gavincook.moon.response.CommonResponse;
-import me.gavincook.moon.template.ExecuteCallBack;
 import me.gavincook.moon.template.ExecuteTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,17 +35,8 @@ public class UserController {
     @ResponseBody
     public CommonResponse<List<User>> search() {
         CommonResponse<List<User>> response = new CommonResponse<>();
-        executeTemplate.executeWithoutTransaction(new ExecuteCallBack() {
-            @Override
-            public void check() {
-
-            }
-
-            @Override
-            public void service() {
-                response.setResult(userService.searchAll());
-            }
-        }, response);
+        executeTemplate
+            .executeWithoutTransaction(() -> response.setResult(userService.searchAll()), response);
         return response;
     }
 
