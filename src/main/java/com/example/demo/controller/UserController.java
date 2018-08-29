@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
-import com.example.demo.mapper.UserMapper;
+import com.example.demo.service.UserService;
 import java.util.List;
 import me.gavincook.moon.response.CommonResponse;
 import me.gavincook.moon.template.ExecuteCallBack;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
 
     @Autowired
     private ExecuteTemplate executeTemplate;
@@ -44,7 +44,7 @@ public class UserController {
 
             @Override
             public void service() {
-                response.setResult(userMapper.list());
+                response.setResult(userService.searchAll());
             }
         }, response);
         return response;
