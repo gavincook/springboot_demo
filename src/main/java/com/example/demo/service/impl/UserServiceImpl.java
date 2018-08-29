@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService {
     public List<User> searchAll() {
         return userMapper.list();
     }
+
+    @Override
+    public boolean add(User user) {
+        return userMapper.insert(user) > 0;
+    }
 }

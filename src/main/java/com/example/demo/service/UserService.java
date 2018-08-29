@@ -17,4 +17,11 @@ public interface UserService {
      */
     List<User> searchAll();
 
+    /**
+     * 新增用户
+     *
+     * @param user 用户对象
+     * @return 新增是否成功
+     */
+    boolean add(User user);
 }

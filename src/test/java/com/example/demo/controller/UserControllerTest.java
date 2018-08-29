@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.User;
 import java.util.List;
+import java.util.Random;
 import me.gavincook.moon.response.CommonResponse;
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,5 +30,15 @@ public class UserControllerTest {
         CommonResponse<List<User>> response = userController.search();
         Assert.assertTrue(response.isSuccess());
         Assert.assertNotNull(response.getResult());
+    }
+
+    @Test
+    public void add() {
+        User user = new User();
+        user.setName("gavin" + Math.random());
+        user.setAge(Math.abs(new Random().nextInt()) % 100 + 1);
+        CommonResponse<Boolean> response = userController.add(user);
+        Assert.assertNotNull(response);
+        Assert.assertTrue(response.getResult());
     }
 }
