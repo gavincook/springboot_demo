@@ -25,6 +25,9 @@ public class UserControllerTest {
     @Autowired
     private UserController userController;
 
+    /**
+     * 用户搜索正常测试
+     */
     @Test
     public void search() {
         CommonResponse<List<User>> response = userController.search();
@@ -32,6 +35,9 @@ public class UserControllerTest {
         Assert.assertNotNull(response.getResult());
     }
 
+    /**
+     * 用户新增正常测试
+     */
     @Test
     public void add() {
         User user = new User();
